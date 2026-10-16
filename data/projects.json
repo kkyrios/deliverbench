@@ -1,0 +1,79 @@
+[
+  {
+    "id": "P01",
+    "domain": "Strategy",
+    "subtasks": 18,
+    "title": "Strategy and industrial partnership",
+    "description": "Carry financial and field evidence into strategy, partnership proposals, and investment recommendations."
+  },
+  {
+    "id": "P02",
+    "domain": "Finance",
+    "subtasks": 13,
+    "title": "Syndicated refinancing",
+    "description": "Reconcile due diligence, financing terms, financial models, and signing-readiness documents."
+  },
+  {
+    "id": "P03",
+    "domain": "Audit",
+    "subtasks": 16,
+    "title": "IT general controls audit",
+    "description": "Keep test evidence, control assessments, issue registers, and audit conclusions aligned."
+  },
+  {
+    "id": "P04",
+    "domain": "Design",
+    "subtasks": 10,
+    "title": "Residential design coordination",
+    "description": "Propagate client changes through requirements, active decisions, drawings, and design reviews."
+  },
+  {
+    "id": "P05",
+    "domain": "Finance",
+    "subtasks": 14,
+    "title": "Forensic fund-flow investigation",
+    "description": "Integrate corrected records, interviews, and additional evidence into fund tracing and final conclusions."
+  },
+  {
+    "id": "P06",
+    "domain": "Finance",
+    "subtasks": 6,
+    "title": "Quantitative strategy research",
+    "description": "Connect data audits, frozen research decisions, trading simulations, and independent evaluation."
+  },
+  {
+    "id": "P07",
+    "domain": "Finance",
+    "subtasks": 21,
+    "title": "Financial due diligence",
+    "description": "Carry management responses into financial workpapers, adjustment schedules, and transaction findings."
+  },
+  {
+    "id": "P08",
+    "domain": "Medicine",
+    "subtasks": 12,
+    "title": "Safety case processing",
+    "description": "Reconcile follow-up evidence, medical assessment, structured fields, and case-closure status."
+  },
+  {
+    "id": "P09",
+    "domain": "Medicine",
+    "subtasks": 17,
+    "title": "Pharmaceutical compliance",
+    "description": "Propagate departmental feedback across policies, approval procedures, and implementation forms."
+  },
+  {
+    "id": "P10",
+    "domain": "Law",
+    "subtasks": 8,
+    "title": "Platform legal documentation",
+    "description": "Update agreements, privacy terms, and launch conditions as business and cross-border arrangements evolve."
+  },
+  {
+    "id": "P11",
+    "domain": "Data Operations",
+    "subtasks": 15,
+    "title": "Evaluation-data delivery",
+    "description": "Coordinate production streams, version replacements, verification evidence, and client handoff states."
+  }
+]

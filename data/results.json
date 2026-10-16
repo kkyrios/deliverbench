@@ -1,0 +1,198 @@
+{
+  "snapshot": "2026-10-14",
+  "projects": 11,
+  "subtasks_per_system": 150,
+  "scoring": "Flat signed integer-weight normalization; equal-project macro average; final gates retained.",
+  "judgment_provenance": "Reporting snapshot of archived runs, with revised criterion weights and retained judgments where applicable. This snapshot does not represent new candidate executions.",
+  "systems": [
+    {
+      "id": "claude",
+      "name": "Claude Opus 5",
+      "harness": "Claude Code",
+      "color": "#b87556",
+      "final": 64.998332704787,
+      "process": 79.754027590057,
+      "pass_rate": 50.0,
+      "passed": 75,
+      "checkpoints": 150
+    },
+    {
+      "id": "gpt",
+      "name": "GPT-5.6 Sol",
+      "harness": "Codex",
+      "color": "#367c75",
+      "final": 63.74728022140091,
+      "process": 76.74241579498933,
+      "pass_rate": 36.0,
+      "passed": 54,
+      "checkpoints": 150
+    },
+    {
+      "id": "qwen",
+      "name": "Qwen 3.8 Max",
+      "harness": "Qwen Code",
+      "color": "#8872aa",
+      "final": 60.39383464270103,
+      "process": 73.22306827159768,
+      "pass_rate": 25.333333333333332,
+      "passed": 38,
+      "checkpoints": 150
+    },
+    {
+      "id": "kimi",
+      "name": "Kimi K3",
+      "harness": "Kimi CLI",
+      "color": "#b7738d",
+      "final": 59.39210771000557,
+      "process": 70.65550576874107,
+      "pass_rate": 26.0,
+      "passed": 39,
+      "checkpoints": 150
+    },
+    {
+      "id": "deepseek",
+      "name": "DeepSeek V4.1 Flash",
+      "harness": "Claude Code",
+      "color": "#6488b2",
+      "final": 58.18205626973438,
+      "process": 73.93975309820898,
+      "pass_rate": 26.666666666666668,
+      "passed": 40,
+      "checkpoints": 150
+    },
+    {
+      "id": "glm",
+      "name": "GLM 5.2",
+      "harness": "Claude Code",
+      "color": "#ac9143",
+      "final": 44.46458604523342,
+      "process": 63.00493709721651,
+      "pass_rate": 14.0,
+      "passed": 21,
+      "checkpoints": 150
+    },
+    {
+      "id": "gemini",
+      "name": "Gemini 3.8 Flash",
+      "harness": "Gemini CLI",
+      "color": "#829954",
+      "final": 40.387247607916215,
+      "process": 58.09744348788466,
+      "pass_rate": 13.333333333333334,
+      "passed": 20,
+      "checkpoints": 150
+    }
+  ],
+  "final_matrix": [
+    {
+      "project": "P01",
+      "claude": 58.595641646489106,
+      "gpt": 53.99515738498789,
+      "qwen": 47.94188861985472,
+      "kimi": 58.83777239709443,
+      "deepseek": 47.21549636803874,
+      "glm": 50.363196125908,
+      "gemini": 26.634382566585955
+    },
+    {
+      "project": "P02",
+      "claude": 40.57450628366247,
+      "gpt": 28.366247755834827,
+      "qwen": 34.8294434470377,
+      "kimi": 0.0,
+      "deepseek": 41.83123877917414,
+      "glm": 40.21543985637343,
+      "gemini": 37.52244165170557
+    },
+    {
+      "project": "P03",
+      "claude": 58.19327731092437,
+      "gpt": 64.91596638655463,
+      "qwen": 72.26890756302521,
+      "kimi": 73.10924369747899,
+      "deepseek": 71.21848739495799,
+      "glm": 60.08403361344538,
+      "gemini": 35.08403361344538
+    },
+    {
+      "project": "P04",
+      "claude": 47.01086956521739,
+      "gpt": 67.66304347826086,
+      "qwen": 61.41304347826087,
+      "kimi": 61.141304347826086,
+      "deepseek": 60.86956521739131,
+      "glm": 54.07608695652174,
+      "gemini": 45.65217391304348
+    },
+    {
+      "project": "P05",
+      "claude": 84.14985590778097,
+      "gpt": 71.46974063400576,
+      "qwen": 60.51873198847262,
+      "kimi": 70.31700288184439,
+      "deepseek": 63.112391930835734,
+      "glm": 63.40057636887608,
+      "gemini": 40.63400576368876
+    },
+    {
+      "project": "P06",
+      "claude": 78.44444444444446,
+      "gpt": 75.33333333333333,
+      "qwen": 78.44444444444446,
+      "kimi": 72.66666666666667,
+      "deepseek": 63.11111111111111,
+      "glm": 52.666666666666664,
+      "gemini": 44.44444444444444
+    },
+    {
+      "project": "P07",
+      "claude": 54.59057071960298,
+      "gpt": 49.37965260545906,
+      "qwen": 56.575682382134,
+      "kimi": 58.80893300248139,
+      "deepseek": 48.883374689826304,
+      "glm": 33.25062034739454,
+      "gemini": 46.898263027295286
+    },
+    {
+      "project": "P08",
+      "claude": 66.37426900584795,
+      "gpt": 59.64912280701754,
+      "qwen": 55.26315789473685,
+      "kimi": 71.6374269005848,
+      "deepseek": 61.69590643274854,
+      "glm": 0.0,
+      "gemini": 47.07602339181287
+    },
+    {
+      "project": "P09",
+      "claude": 75.27272727272727,
+      "gpt": 76.36363636363637,
+      "qwen": 66.9090909090909,
+      "kimi": 54.18181818181819,
+      "deepseek": 56.72727272727273,
+      "glm": 50.18181818181818,
+      "gemini": 54.18181818181819
+    },
+    {
+      "project": "P10",
+      "claude": 69.57210776545166,
+      "gpt": 77.81299524564183,
+      "qwen": 55.30903328050714,
+      "kimi": 45.32488114104596,
+      "deepseek": 52.45641838351822,
+      "glm": 32.32963549920761,
+      "gemini": 41.83835182250396
+    },
+    {
+      "project": "P11",
+      "claude": 82.20338983050848,
+      "gpt": 76.27118644067797,
+      "qwen": 74.85875706214689,
+      "kimi": 87.28813559322035,
+      "deepseek": 72.88135593220339,
+      "glm": 52.54237288135594,
+      "gemini": 24.293785310734464
+    }
+  ]
+}
