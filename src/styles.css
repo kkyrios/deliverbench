@@ -202,6 +202,9 @@ button {
 .brand-light {
   font-weight:500
 }
+.brand img {
+  flex-shrink:0
+}
 nav {
   display:flex;
   gap:28px;
@@ -896,8 +899,8 @@ nav {
   font-size:18px
 }
 .brand img {
-  width:27px;
-  height:27px
+  width:32px;
+  height:32px
 }
 .menu-toggle {
   display:block
