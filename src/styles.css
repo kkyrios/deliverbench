@@ -277,7 +277,9 @@ nav a:hover,nav a.active {
 .hero-description {
   font-size:17px;
   line-height:1.8;
-  margin-top:24px
+  max-width:850px;
+  margin:24px auto 0;
+  text-wrap:balance
 }
 .hero-actions {
   display:flex;
@@ -370,25 +372,13 @@ nav a:hover,nav a.active {
   display:block;
   position:relative;
   text-decoration:none;
+  cursor:zoom-in;
   padding:16px
 }
 .figure-link>img {
   width:100%;
   height:auto;
   border-radius:4px
-}
-.enlarge-label {
-  display:flex;
-  justify-content:flex-end;
-  align-items:center;
-  gap:12px;
-  font-size:11px;
-  color:var(--accent);
-  font-weight:650;
-  padding-top:12px
-}
-.figure-link:hover .enlarge-label {
-  text-decoration:underline
 }
 figcaption {
   border-top:1px solid var(--line);
@@ -1015,10 +1005,6 @@ h2 {
 .figure-link {
   padding:8px
 }
-.enlarge-label {
-  font-size:10px;
-  padding:8px 4px 2px
-}
 figcaption {
   font-size:11px;
   padding:12px 14px
@@ -1200,7 +1186,7 @@ table {
 
 }
 @media print {
-  .site-header,.hero-actions,.enlarge-label,.menu-toggle,footer,.zoom-controls {
+  .site-header,.hero-actions,.menu-toggle,footer,.zoom-controls {
   display:none!important
 }
 .section {
@@ -1271,7 +1257,6 @@ details:not([open]) {
 .case-figure-card { min-width: 0; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: #fff; }
 .case-figure-card .figure-link { padding: 9px; }
 .case-figure-card .figure-link > img { width: 100%; height: auto; }
-.case-figure-card .enlarge-label { padding: 8px 6px 2px; }
 .case-figure-card figcaption { font-size: 11px; padding: 10px 16px; }
 .case-figure-card .evidence-detail { border-top: 0; margin: 0; padding: 14px 16px; }
 .assessment-grid p { margin-left: 0; }

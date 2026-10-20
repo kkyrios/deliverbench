@@ -28,6 +28,8 @@ Open http://127.0.0.1:8766/. The build recreates `dist/`; edit the source files 
 - `assets/`: approved presentation figures, a site icon, share preview, and self-hosted fonts. `assets/models/` contains the supplied model logos. `assets/cases/` contains four crops exported from the supplied case-study slide, with the slide's content and styling preserved.
 - `site.json`: the canonical public URL and share-image base.
 
+Figures open directly when clicked; text disclosures remain separate. The GLM and Gemini logos use standard RGBA PNG encoding for browser compatibility, preserving the supplied pixels.
+
 The numerical checks recompute leaderboard means from the project matrix and checkpoint pass rates from the 150-subtask denominator. They also check local links and the publication boundary. Browser checks are still needed after visual or interaction changes.
 
 ## Deployment and future migration

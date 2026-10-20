@@ -16,7 +16,8 @@ if DIST.exists():
     shutil.rmtree(DIST)
 DIST.mkdir(exist_ok=True)
 logos = {model: f'{model}.png' for model in ['claude', 'gpt', 'kimi', 'glm', 'gemini']}
-logos.update({'deepseek': 'deepseek-color.svg', 'qwen': 'qwen-color.svg'})
+logos.update({'deepseek': 'deepseek-color.svg', 'qwen': 'qwen-color.svg',
+              'glm': 'glm-rgba.png', 'gemini': 'gemini-rgba.png'})
 
 def metric_cell(row, key, label, suffix=''):
     return f'''<td class="metric-cell metric-{key}">
