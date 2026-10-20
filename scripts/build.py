@@ -35,7 +35,10 @@ for index,row in enumerate(SYSTEMS):
       {metric_cell(row, 'final', 'Final delivery')}
       {metric_cell(row, 'pass_rate', 'Subtask pass rate', '%')}
     </tr>''')
-    process.append(f'<tr><td>{escape(row["name"])}</td><td class="number">{row["process"]:.2f}</td><td class="number">{row["final"]:.2f}</td></tr>')
+    process.append(f'''<tr><th scope="row">{escape(row["name"])}</th>
+      {metric_cell(row, 'process', 'Process score')}
+      {metric_cell(row, 'final', 'Final delivery')}
+    </tr>''')
 matrix=[]
 for project in DATA['final_matrix']:
     cells=''.join(f'<td class="{"gate" if project[row["id"]]==0 else ""}">{project[row["id"]]:.2f}</td>' for row in SYSTEMS)
