@@ -19,22 +19,21 @@ const sortSelect = document.querySelector('#sort-by');
 document.querySelector('#sort-control').hidden = false;
 const body = document.querySelector('#leaderboard-body');
 const rows = Array.from(body.rows);
+const leaderboard = document.querySelector('.leaderboard');
 sortSelect.addEventListener('change', () => {
   const key = sortSelect.value === 'pass_rate' ? 'pass' : 'final';
   const sorted = rows.slice().sort((a, b) => Number(b.dataset[key]) - Number(a.dataset[key]) || Number(b.dataset.final) - Number(a.dataset.final));
   sorted.forEach((row, index) => {
     row.querySelector('.rank').textContent = String(index + 1).padStart(2, '0');
     body.append(row);
-    ['final', 'pass'].forEach((metric) => {
-      const chart = document.querySelector(`#${metric}-chart`);
-      const bar = chart.querySelector(`[data-system="${row.dataset.system}"]`);
-      chart.append(bar);
-    });
   });
   const isFinal = key === 'final';
+  leaderboard.dataset.primary = isFinal ? 'final' : 'pass_rate';
   document.querySelector('#final-heading').setAttribute('aria-sort', isFinal ? 'descending' : 'none');
   document.querySelector('#pass-heading').setAttribute('aria-sort', isFinal ? 'none' : 'descending');
-  document.querySelector('#table-caption').textContent = `Seven evaluated systems, ranked by ${isFinal ? 'final-delivery score' : 'subtask pass rate'}. Both charts follow this order.`;
+  const message = `Ranked by ${isFinal ? 'final delivery' : 'subtask pass rate'}. The selected metric is emphasized.`;
+  document.querySelector('#table-caption').textContent = `Seven evaluated systems. ${message}`;
+  document.querySelector('#sort-status').textContent = message;
 });
 
 const navLinks = Array.from(nav.querySelectorAll('a'));

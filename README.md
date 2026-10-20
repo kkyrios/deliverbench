@@ -22,10 +22,10 @@ Open http://127.0.0.1:8766/. The build recreates `dist/`; edit the source files 
 ## Updating content
 
 - `src/index.template.html`: page copy, evidence summaries, figure captions, and reporting details.
-- `src/styles.css` and `src/app.js`: layout and progressively enhanced interactions.
+- `src/styles.css` and `src/app.js`: navy/gray layout and progressively enhanced interactions. The single leaderboard combines model identity, logos, both metric bars, and exact values. Sorting also changes which metric is visually emphasized.
 - `data/results.json`: the reviewed 14 October 2026 reporting snapshot, including the 7-system leaderboard and 77 final-delivery scores. Charts and tables share this data.
 - `data/projects.json`: public descriptions of the 11 projects.
-- `assets/`: approved presentation figures, a site icon, share preview, and self-hosted fonts.
+- `assets/`: approved presentation figures, a site icon, share preview, and self-hosted fonts. `assets/models/` contains the supplied model logos. `assets/cases/` contains four crops exported from the supplied case-study slide, with the slide's content and styling preserved.
 - `site.json`: the canonical public URL and share-image base.
 
 The numerical checks recompute leaderboard means from the project matrix and checkpoint pass rates from the 150-subtask denominator. They also check local links and the publication boundary. Browser checks are still needed after visual or interaction changes.

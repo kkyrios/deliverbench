@@ -15,21 +15,25 @@ DIST = ROOT / 'dist'
 if DIST.exists():
     shutil.rmtree(DIST)
 DIST.mkdir(exist_ok=True)
-short = {'claude':'Claude Opus 5','gpt':'GPT-5.6 Sol','qwen':'Qwen 3.8 Max','kimi':'Kimi K3','deepseek':'DeepSeek V4.1','glm':'GLM 5.2','gemini':'Gemini 3.8'}
+logos = {model: f'{model}.png' for model in ['claude', 'gpt', 'kimi', 'glm', 'gemini']}
+logos.update({'deepseek': 'deepseek-color.svg', 'qwen': 'qwen-color.svg'})
 
-def charts(metric):
-    value_key = 'final' if metric == 'final' else 'pass_rate'
-    unit = '' if metric == 'final' else '%'
-    out = []
-    for row in SYSTEMS:
-        value = row[value_key]
-        out.append(f'<div class="chart-row" data-system="{row["id"]}" style="--model:{row["color"]}"><span class="chart-model"><span class="model-dot" aria-hidden="true"></span>{escape(short[row["id"]])}</span><span class="bar-track" aria-hidden="true"><span class="bar-fill" style="--value:{value:.6f}%"></span></span><span class="chart-value">{value:.2f}{unit}</span></div>')
-    return ''.join(out)
+def metric_cell(row, key, label, suffix=''):
+    return f'''<td class="metric-cell metric-{key}">
+      <span class="mobile-metric-label">{label}</span>
+      <div class="metric-visual"><span class="metric-track" aria-hidden="true"><span class="metric-fill" style="--value:{row[key]:.6f}%"></span></span>
+      <span class="metric-value">{row[key]:.2f}{suffix}</span></div>
+    </td>'''
 
 leaderboard=[]
 process=[]
 for index,row in enumerate(SYSTEMS):
-    leaderboard.append(f'<tr data-system="{row["id"]}" data-final="{row["final"]}" data-pass="{row["pass_rate"]}"><td class="rank">{index+1:02d}</td><td><div class="system-cell"><span class="system-monogram" style="--model:{row["color"]}" aria-hidden="true">{row["name"][0]}</span><span class="system-name">{escape(row["name"])}<span class="system-harness">{escape(row["harness"])}</span></span></div></td><td class="number score-main">{row["final"]:.2f}</td><td class="number">{row["pass_rate"]:.2f}%</td></tr>')
+    leaderboard.append(f'''<tr data-system="{row['id']}" data-final="{row['final']}" data-pass="{row['pass_rate']}">
+      <td class="rank">{index+1:02d}</td>
+      <th scope="row" class="model-cell"><div class="system-cell"><span class="model-logo"><img src="assets/models/{logos[row['id']]}" alt="" width="34" height="34"></span><span class="system-name">{escape(row['name'])}<span class="system-harness">{escape(row['harness'])}</span></span></div></th>
+      {metric_cell(row, 'final', 'Final delivery')}
+      {metric_cell(row, 'pass_rate', 'Subtask pass rate', '%')}
+    </tr>''')
     process.append(f'<tr><td>{escape(row["name"])}</td><td class="number">{row["process"]:.2f}</td><td class="number">{row["final"]:.2f}</td></tr>')
 matrix=[]
 for project in DATA['final_matrix']:
@@ -38,7 +42,7 @@ for project in DATA['final_matrix']:
 projects=[]
 for p in PROJECTS:
     projects.append(f'<article class="project-row"><span class="project-id">{p["id"]}</span><div><h3 class="project-title">{escape(p["title"])}</h3><p class="project-meta">{p["domain"]} · {p["subtasks"]} subtasks</p></div><p>{escape(p["description"])}</p></article>')
-replacements = {'FINAL_CHART':charts('final'),'PASS_CHART':charts('pass'),'LEADERBOARD':''.join(leaderboard),'PROCESS_TABLE':''.join(process),'MATRIX_HEADERS':''.join(f'<th scope="col" class="number">{row["id"].capitalize() if row["id"] != "gpt" else "GPT"}</th>' for row in SYSTEMS),'MATRIX':''.join(matrix),'PROJECTS':''.join(projects)}
+replacements = {'LEADERBOARD':''.join(leaderboard),'PROCESS_TABLE':''.join(process),'MATRIX_HEADERS':''.join(f'<th scope="col" class="number">{row["id"].capitalize() if row["id"] != "gpt" else "GPT"}</th>' for row in SYSTEMS),'MATRIX':''.join(matrix),'PROJECTS':''.join(projects)}
 html=(ROOT/'src/index.template.html').read_text()
 replacements['SITE_URL'] = escape(SITE['url'].rstrip('/') + '/', quote=True)
 for key,value in replacements.items(): html=html.replace('{{'+key+'}}',value)
