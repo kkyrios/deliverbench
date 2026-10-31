@@ -14,8 +14,8 @@
   <link rel="canonical" href="{{SITE_URL}}">
   <title>DeliverBench — Professional project delivery</title>
   <link rel="icon" href="assets/favicon.svg?v=folio-b" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css">
-  <script src="app.js" defer></script>
+  <link rel="stylesheet" href="styles.css?v=p02-20261031">
+  <script src="app.js?v=p02-20261031" defer></script>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -57,7 +57,9 @@
       <details class="expandable more-results"><summary><span>More results</span><span class="summary-detail">Process scores · all 77 final scores · full analysis</span><span class="plus" aria-hidden="true">+</span></summary><div class="details-content"><h3>Checkpoint performance and final delivery</h3><p class="muted">Process scores first average subtasks within each project, then average the 11 projects equally. Process and final scores assess different artifact versions and evaluation scopes; the difference alone does not establish causal deterioration.</p><div class="table-scroll" role="region" aria-label="Process and final score comparison" tabindex="0"><table class="score-comparison"><caption>Scores out of 100 · shared scale for both columns</caption><colgroup><col><col><col></colgroup><thead><tr><th scope="col">System</th><th scope="col"><span class="score-key process" aria-hidden="true"></span>Process score</th><th scope="col"><span class="score-key final" aria-hidden="true"></span>Final delivery</th></tr></thead><tbody>{{PROCESS_TABLE}}</tbody></table></div><h3 class="spaced">Final delivery by project</h3><p class="muted">All final scores include applicable fatal gates. A triggered gate sets that project’s score to zero.</p><div class="table-scroll" role="region" aria-label="11 projects by seven systems; scroll horizontally" tabindex="0"><table class="matrix"><thead><tr><th scope="col">Project</th>{{MATRIX_HEADERS}}</tr></thead><tbody>{{MATRIX}}</tbody></table></div><figure class="paper-figure inset"><a class="figure-link" href="assets/results-overview.webp" data-lightbox data-caption="Main results: delivery scores, checkpoint pass rates, process scores, resource use, and diagnostic dimensions. Diagnostic dimension scores precede final project gates."><img src="assets/results-overview.webp" alt="Six-panel analysis of scores, process and final comparison, resource use, and diagnostic dimensions." loading="lazy" width="2600" height="1932"></a><figcaption>Additional diagnostic views of the same reporting snapshot.</figcaption></figure></div></details>
     </div>
   </section>
-  <section class="section" id="cases" aria-labelledby="cases-title"><div class="wrap">
+  <section class="section" id="cases" aria-label="Project example and delivery cases"><div class="wrap">
+    {{P02_SHOWCASE}}
+    <script id="p02-data" type="application/json">{{P02_DATA}}</script>
     <div class="section-heading"><div><p class="eyebrow">Selected cases</p><h2 id="cases-title">What breaks<br><em>at handoff?</em></h2></div><p>Information can be recorded in one artifact while a related file still says something else. Preserved outputs make these delivery failures visible.</p></div>
     <div class="case-grid">
       <article class="case-figure-card" aria-label="P03: Conflicting audit conclusions">

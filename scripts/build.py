@@ -4,6 +4,7 @@ from pathlib import Path
 from html import escape
 import json
 import shutil
+from showcase import render_showcase
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = json.loads((ROOT / 'data/results.json').read_text())
@@ -49,6 +50,9 @@ for p in PROJECTS:
 replacements = {'LEADERBOARD':''.join(leaderboard),'PROCESS_TABLE':''.join(process),'MATRIX_HEADERS':''.join(f'<th scope="col" class="number">{row["id"].capitalize() if row["id"] != "gpt" else "GPT"}</th>' for row in SYSTEMS),'MATRIX':''.join(matrix),'PROJECTS':''.join(projects)}
 html=(ROOT/'src/index.template.html').read_text()
 replacements['SITE_URL'] = escape(SITE['url'].rstrip('/') + '/', quote=True)
+showcase = json.loads((ROOT / 'data/p02-showcase.json').read_text())
+replacements['P02_SHOWCASE'] = render_showcase(showcase)
+replacements['P02_DATA'] = json.dumps(showcase, ensure_ascii=False).replace('<', '\\u003c')
 for key,value in replacements.items(): html=html.replace('{{'+key+'}}',value)
 assert '{{' not in html, 'Unresolved template placeholder'
 (DIST/'index.html').write_text(html)

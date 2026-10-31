@@ -25,12 +25,14 @@ Open http://127.0.0.1:8766/. The build recreates `dist/`; edit the source files 
 - `src/styles.css` and `src/app.js`: navy/gray layout and progressively enhanced interactions. The single leaderboard combines model identity, logos, both metric bars, and exact values. Sorting also changes which metric is visually emphasized.
 - `data/results.json`: the reviewed 14 October 2026 reporting snapshot, including the 7-system leaderboard and 77 final-delivery scores. Charts and tables share this data.
 - `data/projects.json`: public descriptions of the 11 projects.
+- `data/p02-showcase.json`: the public P02 v3.1.0 example: 13 task labels, curated artifact/context dependencies, lender-feedback sources, and six final deliverables. This example describes the project mechanics; it does not add new model results to the reporting snapshot.
+- `scripts/showcase.py`: builds the accessible P02 task map and independent checkpoint/final evaluation panels. JavaScript highlights immediate dependencies; narrow screens and the no-JavaScript view retain explicit task links.
 - `assets/`: approved presentation figures, a site icon, share preview, and self-hosted fonts. `assets/models/` contains the supplied model logos. `assets/cases/` contains four crops exported from the supplied case-study slide, with the slide's content and styling preserved.
 - `site.json`: the canonical public URL and share-image base.
 
 Figures open directly when clicked; text disclosures remain separate. The GLM and Gemini logos use standard RGBA PNG encoding for browser compatibility, preserving the supplied pixels.
 
-The numerical checks recompute leaderboard means from the project matrix and checkpoint pass rates from the 150-subtask denominator. They also check local links and the publication boundary. Browser checks are still needed after visual or interaction changes.
+The numerical checks recompute leaderboard means from the project matrix and checkpoint pass rates from the 150-subtask denominator. They also check local links, the publication boundary, and P02 task coverage, dependency acyclicity, feedback sources and final-file mapping. Browser checks are still needed after visual or interaction changes.
 
 ## Deployment and future migration
 

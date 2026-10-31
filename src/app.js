@@ -104,3 +104,87 @@ document.querySelector('#zoom-fit').addEventListener('click', fitFigure);
 dialog.addEventListener('click', event => { if (event.target === dialog) { const r = dialog.getBoundingClientRect(); if (event.clientX < r.left || event.clientX > r.right || event.clientY < r.top || event.clientY > r.bottom) dialog.close(); } });
 dialog.addEventListener('close', () => { document.body.classList.remove('modal-open'); dialogImage.removeAttribute('src'); opener?.focus(); });
 window.addEventListener('resize', () => { if (dialog.open) fitFigure(); });
+
+// P02 exploration enhances fully rendered task and dependency content.
+const projectDataElement = document.querySelector('#p02-data');
+if (projectDataElement) {
+  const projectData = JSON.parse(projectDataElement.textContent);
+  const showcase = document.querySelector('.project-showcase');
+  const projectMap = showcase.querySelector('.project-map');
+  const projectDetail = showcase.querySelector('#project-detail');
+  const resetProject = showcase.querySelector('#project-reset');
+  const projectNodes = new Map([...projectData.tasks, projectData.feedback].map(task => [task.id, task]));
+  let selectedTask = null;
+  showcase.classList.add('project-interactive');
+  showcase.querySelectorAll('button[data-project-select]').forEach(button => { button.disabled = false; });
+  projectDetail.hidden = false;
+  resetProject.hidden = false;
+  showcase.querySelector('.project-interaction-hint').hidden = false;
+
+  function relatedLinks(containerId, ids) {
+    const container = document.getElementById(containerId);
+    container.replaceChildren();
+    ids.forEach(id => {
+      const link = document.createElement('a');
+      link.href = `#p02-${id}`;
+      link.textContent = id === 'LENDER' ? 'Lender questions' : id === 'FINAL' ? 'Final package' : id;
+      if (projectNodes.has(id)) {
+        link.dataset.projectSelect = id;
+        link.title = projectNodes.get(id).label;
+      }
+      container.append(link);
+    });
+  }
+
+  function selectProjectTask(id) {
+    selectedTask = id;
+    const task = projectNodes.get(id);
+    const incoming = task ? projectData.edges.filter(edge => edge.to === id).map(edge => edge.from) : [];
+    const outgoing = task ? projectData.edges.filter(edge => edge.from === id).map(edge => edge.to) : [];
+    const related = new Set([...incoming, ...outgoing]);
+    projectMap.classList.toggle('has-selection', Boolean(task));
+    showcase.querySelectorAll('[data-project-node]').forEach(node => {
+      const nodeId = node.dataset.projectNode;
+      node.classList.toggle('is-selected', nodeId === id);
+      node.classList.toggle('is-related', related.has(nodeId));
+      node.classList.toggle('is-dimmed', Boolean(task) && nodeId !== id && !related.has(nodeId));
+      node.querySelector('button')?.setAttribute('aria-pressed', String(nodeId === id));
+    });
+    showcase.querySelectorAll('.project-edge').forEach(path => {
+      const active = path.dataset.from === id || path.dataset.to === id;
+      path.classList.toggle('edge-active', active);
+    });
+    showcase.querySelectorAll('[data-output-source]').forEach(output => {
+      output.classList.toggle('output-related', output.dataset.outputSource === id || id === 'T13');
+    });
+    showcase.querySelectorAll('.checkpoint-list a').forEach(link => {
+      if (link.dataset.projectSelect === id) link.setAttribute('aria-current', 'true');
+      else link.removeAttribute('aria-current');
+    });
+    document.querySelector('#project-detail-title').textContent = task ? `${id === 'LENDER' ? 'Business feedback' : id} · ${task.label}` : 'Explore the dependencies';
+    document.querySelector('#project-detail-hint').textContent = task ? 'Highlighted connections show the selected task’s immediate inputs and handoffs.' : 'Select a task to trace the work it uses and the deliverables it informs.';
+    document.querySelector('#project-detail-uses').textContent = task?.uses || 'Diligence, financing terms and models become inputs to later tasks.';
+    document.querySelector('#project-detail-produces').textContent = task?.produces || 'Each submission becomes part of the agent’s persistent project workspace.';
+    document.querySelector('#project-detail-feeds').textContent = task ? outgoing.map(target => target === 'FINAL' ? 'The six-file final delivery package' : projectNodes.get(target).label).join('; ') + '.' : 'Later reviews, lender responses and the final delivery package.';
+    relatedLinks('project-detail-incoming', incoming);
+    relatedLinks('project-detail-outgoing', outgoing);
+    document.querySelector('#project-selection-status').textContent = task ? `${id}: ${task.label}. ${incoming.length} upstream and ${outgoing.length} downstream connections. Details updated below the map.` : 'All project connections shown.';
+  }
+  showcase.addEventListener('click', event => {
+    const control = event.target.closest('[data-project-select]');
+    if (!control) return;
+    if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    event.preventDefault();
+    const id = control.dataset.projectSelect;
+    selectProjectTask(id);
+    if (control.tagName === 'A') {
+      const node = document.getElementById(`p02-${id}`);
+      node.querySelector('button')?.focus({ preventScroll: true });
+      node.scrollIntoView({ block: 'center', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
+    }
+  });
+  resetProject.addEventListener('click', () => selectProjectTask(null));
+  showcase.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && selectedTask) { selectProjectTask(null); }
+  });
+}

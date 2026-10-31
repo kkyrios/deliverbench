@@ -1,0 +1,333 @@
+{
+  "project": "P02",
+  "version": "3.1.0",
+  "title": "Syndicated refinancing",
+  "description": "Act as the deal execution team for a digital infrastructure refinancing. Bring together due diligence, financing terms, financial models, and lender feedback into a coherent package for signing preparation.",
+  "phases": [
+    {
+      "id": 1,
+      "title": "Due diligence",
+      "inputs": "Diligence materials"
+    },
+    {
+      "id": 2,
+      "title": "Financing proposal",
+      "inputs": "Lender feedback"
+    },
+    {
+      "id": 3,
+      "title": "Modelling & review",
+      "inputs": "Board decisions"
+    },
+    {
+      "id": 4,
+      "title": "Syndication & handoff",
+      "inputs": "Order updates · signing instructions"
+    }
+  ],
+  "tasks": [
+    {
+      "id": "T01",
+      "label": "Financial due diligence",
+      "phase": 1,
+      "x": 16,
+      "y": 86,
+      "uses": "Financial records and late diligence evidence.",
+      "produces": "An earnings-quality report with the adopted earnings basis and unresolved reconciliation items."
+    },
+    {
+      "id": "T02",
+      "label": "Environmental & insurance review",
+      "phase": 1,
+      "x": 16,
+      "y": 220,
+      "uses": "Permitting, environmental and insurance records.",
+      "produces": "A review that distinguishes confirmed coverage and permissions from outstanding conditions."
+    },
+    {
+      "id": "T03",
+      "label": "Technical due diligence",
+      "phase": 1,
+      "x": 16,
+      "y": 354,
+      "uses": "Technical records for the asset portfolio and network.",
+      "produces": "Asset assessments with capital-expenditure risks, cost evidence and remaining uncertainties."
+    },
+    {
+      "id": "T04",
+      "label": "Tax structuring",
+      "phase": 1,
+      "x": 16,
+      "y": 488,
+      "uses": "Tax records and the proposed ownership structure.",
+      "produces": "A tax memo explaining the relevant scenario and the limits of its application."
+    },
+    {
+      "id": "T05",
+      "label": "Lender presentation",
+      "phase": 2,
+      "x": 306,
+      "y": 86,
+      "uses": "The agent’s financial, environmental, technical and tax diligence.",
+      "produces": "A lender presentation bringing together debt-service capacity, financing proposals and open issues."
+    },
+    {
+      "id": "T06",
+      "label": "Committee pre-read",
+      "phase": 2,
+      "x": 306,
+      "y": 287,
+      "uses": "The lender presentation, supporting diligence and unresolved execution conditions.",
+      "produces": "A committee pre-read that identifies decisions, alternatives and conditions for proceeding."
+    },
+    {
+      "id": "T07",
+      "label": "Financing terms",
+      "phase": 2,
+      "x": 306,
+      "y": 488,
+      "uses": "Earlier financing analysis, committee issues, lender feedback and management comments.",
+      "produces": "A revised term sheet for modelling, internal review and further lender discussions."
+    },
+    {
+      "id": "T08",
+      "label": "Core financial model",
+      "phase": 3,
+      "x": 596,
+      "y": 86,
+      "uses": "Financing terms, technical risks and the applicable tax assumptions, checked against source evidence.",
+      "produces": "A recalculating financing model with traceable assumptions and debt-service calculations."
+    },
+    {
+      "id": "T09",
+      "label": "Scenario models",
+      "phase": 3,
+      "x": 596,
+      "y": 287,
+      "uses": "The agent’s own core financial model.",
+      "produces": "Two scenario models, an assumptions memo and a record of the changes actually made."
+    },
+    {
+      "id": "T10",
+      "label": "Committee & lender materials",
+      "phase": 3,
+      "x": 596,
+      "y": 488,
+      "uses": "Scenario results, the earlier committee pack and current financing terms, alongside new board decisions.",
+      "produces": "A final committee pack, a lender invitation and a working-group status note for their respective audiences."
+    },
+    {
+      "id": "T11",
+      "label": "Syndication update",
+      "phase": 4,
+      "x": 886,
+      "y": 220,
+      "uses": "Scenario analysis, invitation materials and open conditions, plus new orders and lender clarification questions.",
+      "produces": "A syndication report answering the questions, updating execution status and identifying changes still needed."
+    },
+    {
+      "id": "T12",
+      "label": "Valuation references",
+      "phase": 4,
+      "x": 886,
+      "y": 354,
+      "uses": "Market evidence, model assumptions and current financing status. Financing context does not replace independent market evidence.",
+      "produces": "A valuation-multiples summary that states the applicability and limits of each method."
+    },
+    {
+      "id": "T13",
+      "label": "Final handoff",
+      "phase": 4,
+      "x": 886,
+      "y": 488,
+      "uses": "The agent’s models, assumptions, syndication update and valuation summary, together with current terms and signing instructions.",
+      "produces": "A six-file handoff with the current arrangements and outstanding conditions clearly identified."
+    }
+  ],
+  "feedback": {
+    "id": "LENDER",
+    "label": "Lender clarification questions",
+    "x": 886,
+    "y": 28,
+    "uses": "The agent’s actual lender presentation, financing terms and invitation materials.",
+    "produces": "Business clarification questions that the agent must address in the syndication update. These questions do not themselves approve or change financing terms."
+  },
+  "edges": [
+    {
+      "from": "T01",
+      "to": "T05",
+      "kind": "artifact"
+    },
+    {
+      "from": "T02",
+      "to": "T05",
+      "kind": "artifact"
+    },
+    {
+      "from": "T03",
+      "to": "T05",
+      "kind": "artifact"
+    },
+    {
+      "from": "T04",
+      "to": "T05",
+      "kind": "artifact"
+    },
+    {
+      "from": "T05",
+      "to": "T06",
+      "kind": "artifact"
+    },
+    {
+      "from": "T05",
+      "to": "T07",
+      "kind": "artifact"
+    },
+    {
+      "from": "T06",
+      "to": "T07",
+      "kind": "artifact"
+    },
+    {
+      "from": "T07",
+      "to": "T08",
+      "kind": "artifact"
+    },
+    {
+      "from": "T08",
+      "to": "T09",
+      "kind": "artifact"
+    },
+    {
+      "from": "T06",
+      "to": "T10",
+      "kind": "artifact"
+    },
+    {
+      "from": "T07",
+      "to": "T10",
+      "kind": "artifact"
+    },
+    {
+      "from": "T09",
+      "to": "T10",
+      "kind": "artifact"
+    },
+    {
+      "from": "T09",
+      "to": "T11",
+      "kind": "artifact"
+    },
+    {
+      "from": "T10",
+      "to": "T11",
+      "kind": "artifact"
+    },
+    {
+      "from": "T09",
+      "to": "T12",
+      "kind": "artifact"
+    },
+    {
+      "from": "T11",
+      "to": "T12",
+      "kind": "artifact"
+    },
+    {
+      "from": "T07",
+      "to": "T13",
+      "kind": "artifact"
+    },
+    {
+      "from": "T09",
+      "to": "T13",
+      "kind": "artifact"
+    },
+    {
+      "from": "T10",
+      "to": "T13",
+      "kind": "artifact"
+    },
+    {
+      "from": "T11",
+      "to": "T13",
+      "kind": "artifact"
+    },
+    {
+      "from": "T12",
+      "to": "T13",
+      "kind": "artifact"
+    },
+    {
+      "from": "T02",
+      "to": "T06",
+      "kind": "context"
+    },
+    {
+      "from": "T02",
+      "to": "T11",
+      "kind": "context"
+    },
+    {
+      "from": "T03",
+      "to": "T08",
+      "kind": "context"
+    },
+    {
+      "from": "T04",
+      "to": "T08",
+      "kind": "context"
+    },
+    {
+      "from": "T05",
+      "to": "LENDER",
+      "kind": "feedback"
+    },
+    {
+      "from": "T07",
+      "to": "LENDER",
+      "kind": "feedback"
+    },
+    {
+      "from": "T10",
+      "to": "LENDER",
+      "kind": "feedback"
+    },
+    {
+      "from": "LENDER",
+      "to": "T11",
+      "kind": "feedback"
+    },
+    {
+      "from": "T13",
+      "to": "FINAL",
+      "kind": "artifact"
+    }
+  ],
+  "deliverables": [
+    {
+      "label": "Base-case model",
+      "from": "T09"
+    },
+    {
+      "label": "Assumptions memo",
+      "from": "T09"
+    },
+    {
+      "label": "Syndication update",
+      "from": "T11"
+    },
+    {
+      "label": "Valuation summary",
+      "from": "T12"
+    },
+    {
+      "label": "Signature page",
+      "from": "T13"
+    },
+    {
+      "label": "Draft commitment letter",
+      "from": "T13"
+    }
+  ]
+}
